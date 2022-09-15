@@ -1,0 +1,6 @@
+name: NeverVPN
+version: '${project.version}'
+main: me.lorenzo.nevervpn.NeverVPN
+api-version: 1.19
+authors: [ ChocoDev ]
+description: NeverVPN plugin
