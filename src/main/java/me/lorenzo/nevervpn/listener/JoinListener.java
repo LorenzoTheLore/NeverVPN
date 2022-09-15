@@ -2,6 +2,7 @@ package me.lorenzo.nevervpn.listener;
 
 import me.lorenzo.nevervpn.NeverVPN;
 import me.lorenzo.nevervpn.vpn.VPNChecker;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -32,7 +33,9 @@ public class JoinListener implements Listener {
 
         vpnChecker.fetchInfo(ip).whenCompleteAsync((ipInfo, throwable) -> {
             if (ipInfo.isVpn()) {
-                player.kickPlayer("Per favore, smetti di usare la vpn!");
+                Bukkit.getScheduler().runTask(NeverVPN.getInstance(), () -> {
+                    player.kickPlayer("Per favore, smetti di usare la vpn!");
+                });
             }
         });
     }
