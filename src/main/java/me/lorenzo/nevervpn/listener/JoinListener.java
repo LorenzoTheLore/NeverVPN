@@ -29,7 +29,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerHandshakeEvent event) {
         String ip = event.getSocketAddressHostname();
-
+        
         vpnChecker.fetchInfo(ip).whenCompleteAsync((ipInfo, throwable) -> {
             if (ipInfo.isVpn()) {
                 Bukkit.getScheduler().runTask(NeverVPN.getInstance(), () -> {
