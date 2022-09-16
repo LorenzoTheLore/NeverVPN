@@ -8,6 +8,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+/**
+ * Listen for join of players, in particular the {@link PlayerJoinEvent PlayerJoinEvent}
+ */
 public class JoinListener implements Listener {
     /**
      * VPNChecker instance
@@ -29,7 +32,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerHandshakeEvent event) {
         String ip = event.getSocketAddressHostname();
-        
+
         vpnChecker.fetchInfo(ip).whenCompleteAsync((ipInfo, throwable) -> {
             if (ipInfo.isVpn()) {
                 Bukkit.getScheduler().runTask(NeverVPN.getInstance(), () -> {
